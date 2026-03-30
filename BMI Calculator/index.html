@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Health Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>🏋️ BMI Calculator</h1>
+            <p class="subtitle">Track Your Body Mass Index</p>
+        </header>
+
+        <!-- Calculator Card -->
+        <div class="calculator-card">
+            <!-- Input Form -->
+            <form id="bmiForm">
+                <!-- Weight Input -->
+                <div class="input-group">
+                    <label for="weight">
+                        <span class="label-icon">⚖️</span>
+                        Weight (kg)
+                    </label>
+                    <input 
+                        type="number" 
+                        id="weight" 
+                        placeholder="Enter your weight"
+                        step="0.1"
+                        min="1"
+                        max="500"
+                        required
+                    >
+                </div>
+
+                <!-- Height Input -->
+                <div class="input-group">
+                    <label for="height">
+                        <span class="label-icon">📏</span>
+                        Height (cm)
+                    </label>
+                    <input 
+                        type="number" 
+                        id="height" 
+                        placeholder="Enter your height"
+                        step="0.1"
+                        min="1"
+                        max="300"
+                        required
+                    >
+                </div>
+
+                <!-- Button Group -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-calculate">
+                        Calculate BMI
+                    </button>
+                    <button type="button" class="btn btn-reset" id="resetBtn">
+                        Reset
+                    </button>
+                </div>
+            </form>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message">
+                <span class="error-icon">⚠️</span>
+                <span id="errorText">Please enter valid values!</span>
+            </div>
+
+            <!-- Result Section -->
+            <div id="resultSection" class="result-section">
+                <div class="result-header">Your BMI Result</div>
+                <div class="bmi-value" id="bmiValue">0.00</div>
+                <div class="bmi-category" id="bmiCategory">Category</div>
+                <div class="bmi-description" id="bmiDescription">
+                    Description will appear here
+                </div>
+                <div class="health-tip" id="healthTip">
+                    💡 <span id="tipText">Health tip will appear here</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BMI Reference Chart -->
+        <div class="bmi-chart">
+            <h3>📊 BMI Categories Reference</h3>
+            <div class="chart-grid">
+                <div class="chart-item chart-underweight">
+                    <div class="chart-label">Underweight</div>
+                    <div class="chart-range">&lt; 18.5</div>
+                </div>
+                <div class="chart-item chart-normal">
+                    <div class="chart-label">Normal Weight</div>
+                    <div class="chart-range">18.5 - 24.9</div>
+                </div>
+                <div class="chart-item chart-overweight">
+                    <div class="chart-label">Overweight</div>
+                    <div class="chart-range">25 - 29.9</div>
+                </div>
+                <div class="chart-item chart-obese">
+                    <div class="chart-label">Obese</div>
+                    <div class="chart-range">≥ 30</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <h3>ℹ️ About BMI</h3>
+            <p>
+                Body Mass Index (BMI) is a measure of body fat based on height and weight. 
+                It's calculated by dividing your weight in kilograms by the square of your height in meters.
+            </p>
+            <div class="formula">
+                <strong>Formula:</strong> BMI = weight (kg) / height² (m²)
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with ❤️ for Health & Wellness</p>
+            <p class="disclaimer">
+                * This calculator is for educational purposes only. 
+                Consult a healthcare professional for medical advice.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Link JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>

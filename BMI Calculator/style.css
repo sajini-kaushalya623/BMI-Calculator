@@ -1,0 +1,519 @@
+/* ==================== CSS RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==================== ROOT VARIABLES ==================== */
+:root {
+    /* Color Palette */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    
+    /* BMI Category Colors */
+    --underweight: #ffeaa7;
+    --underweight-text: #6c5ce7;
+    --normal: #55efc4;
+    --normal-text: #00695c;
+    --overweight: #fab1a0;
+    --overweight-text: #d63031;
+    --obese: #ff6b6b;
+    --obese-text: #ffffff;
+    
+    /* Neutral Colors */
+    --white: #ffffff;
+    --black: #000000;
+    --gray-light: #f8f9fa;
+    --gray: #e0e0e0;
+    --gray-dark: #666666;
+    --text-primary: #333333;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 15px;
+    --spacing-md: 25px;
+    --spacing-lg: 40px;
+}
+
+/* ==================== BODY STYLES ==================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--primary-gradient);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==================== MAIN CONTAINER ==================== */
+.container {
+    max-width: 600px;
+    width: 100%;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--white);
+}
+
+.header h1 {
+    font-size: 42px;
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* ==================== CALCULATOR CARD ==================== */
+.calculator-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ==================== FORM STYLES ==================== */
+.input-group {
+    margin-bottom: var(--spacing-md);
+}
+
+label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.label-icon {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--gray);
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+    background: var(--white);
+}
+
+input[type="number"]:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input[type="number"]:hover {
+    border-color: #764ba2;
+}
+
+/* Remove spinner arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ==================== BUTTONS ==================== */
+.button-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: 30px;
+}
+
+.btn {
+    flex: 1;
+    padding: 15px 25px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-calculate {
+    background: var(--primary-gradient);
+    color: var(--white);
+}
+
+.btn-calculate:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-calculate:active {
+    transform: translateY(0);
+}
+
+.btn-reset {
+    background: var(--gray-light);
+    color: var(--gray-dark);
+}
+
+.btn-reset:hover {
+    background: var(--gray);
+    color: var(--text-primary);
+}
+
+/* ==================== ERROR MESSAGE ==================== */
+.error-message {
+    background: #ffe6e6;
+    color: #d32f2f;
+    padding: 15px;
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-md);
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    border: 1px solid #ffcdd2;
+    animation: shake 0.5s ease;
+}
+
+.error-message.show {
+    display: flex;
+}
+
+.error-icon {
+    font-size: 20px;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ==================== RESULT SECTION ==================== */
+.result-section {
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    display: none;
+    animation: scaleIn 0.5s ease;
+}
+
+.result-section.show {
+    display: block;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.result-header {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.bmi-value {
+    font-size: 56px;
+    font-weight: bold;
+    margin: 15px 0;
+    line-height: 1;
+}
+
+.bmi-category {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bmi-description {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.95;
+    margin-bottom: 20px;
+}
+
+.health-tip {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* ==================== BMI CATEGORY COLORS ==================== */
+.result-section.underweight {
+    background: linear-gradient(135deg, var(--underweight) 0%, #fdcb6e 100%);
+    color: var(--underweight-text);
+}
+
+.result-section.normal {
+    background: linear-gradient(135deg, var(--normal) 0%, #00b894 100%);
+    color: var(--normal-text);
+}
+
+.result-section.overweight {
+    background: linear-gradient(135deg, var(--overweight) 0%, #ff7675 100%);
+    color: var(--overweight-text);
+}
+
+.result-section.obese {
+    background: linear-gradient(135deg, var(--obese) 0%, #c0392b 100%);
+    color: var(--obese-text);
+}
+
+/* ==================== BMI CHART ==================== */
+.bmi-chart {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.bmi-chart h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: 20px;
+    text-align: center;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.chart-item {
+    padding: 20px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.chart-item:hover {
+    transform: translateY(-5px);
+}
+
+.chart-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.chart-range {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chart-underweight {
+    background: var(--underweight);
+    color: var(--underweight-text);
+}
+
+.chart-normal {
+    background: var(--normal);
+    color: var(--normal-text);
+}
+
+.chart-overweight {
+    background: var(--overweight);
+    color: var(--overweight-text);
+}
+
+.chart-obese {
+    background: var(--obese);
+    color: var(--obese-text);
+}
+
+/* ==================== INFO SECTION ==================== */
+.info-section {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.info-section h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 20px;
+}
+
+.info-section p {
+    color: var(--gray-dark);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.formula {
+    background: var(--gray-light);
+    padding: 15px;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid #667eea;
+    margin-top: var(--spacing-sm);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    text-align: center;
+    color: var(--white);
+    padding: var(--spacing-md) 0;
+}
+
+.footer p {
+    margin-bottom: var(--spacing-xs);
+    opacity: 0.95;
+}
+
+.disclaimer {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .calculator-card,
+    .bmi-chart,
+    .info-section {
+        padding: 25px;
+    }
+
+    .bmi-value {
+        font-size: 48px;
+    }
+
+    .bmi-category {
+        font-size: 24px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .calculator-card,
+    .bmi-chart,
+    .info-section {
+        padding: 20px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .bmi-value {
+        font-size: 42px;
+    }
+
+    .bmi-category {
+        font-size: 22px;
+    }
+
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+    .header h1 {
+        font-size: 24px;
+    }
+
+    input[type="number"] {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .bmi-value {
+        font-size: 36px;
+    }
+}
+
+/* ==================== PRINT STYLES ==================== */
+@media print {
+    body {
+        background: white;
+    }
+
+    .btn-reset,
+    .button-group {
+        display: none;
+    }
+}
